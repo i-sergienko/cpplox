@@ -6,13 +6,13 @@
 #include <iomanip>
 #include "chunk.h"
 
-int simpleInstruction(const std::string &name, int offset) {
+int simpleInstruction(const std::string &&name, int offset) {
     std::cout << name << std::endl;
     return offset + 1;
 }
 
 int disassembleInstruction(Chunk *chunk, int offset) {
-    std::cout << std::setfill('0') << std::setw(4) << offset;
+    std::cout << std::setfill('0') << std::setw(4) << offset << " ";
 
     uint8_t instruction = chunk->code[offset];
     switch (instruction) {
