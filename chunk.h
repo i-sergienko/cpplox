@@ -12,16 +12,18 @@ enum OpCode {
 struct Chunk {
     std::vector<uint8_t> code;
     std::vector<Value> constants;
+    std::vector<int> lines;
 
-    void write_chunk(uint8_t byte);
+    void write_chunk(uint8_t byte, int line);
 
     int add_constant(Value value);
 
     void clear();
 };
 
-void Chunk::write_chunk(uint8_t byte) {
+void Chunk::write_chunk(uint8_t byte, int line) {
     this->code.push_back(byte);
+    this->lines.push_back(line);
 }
 
 int Chunk::add_constant(Value value) {
@@ -31,6 +33,8 @@ int Chunk::add_constant(Value value) {
 
 void Chunk::clear() {
     this->code.clear();
+    this->constants.clear();
+    this->lines.clear();
 }
 
 
