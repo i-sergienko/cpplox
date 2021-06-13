@@ -5,9 +5,13 @@
 int main() {
     Chunk chunk;
 
-    chunk.code.push_back(OP_RETURN);
+    int constant_idx = chunk.add_constant(1.2);
+    chunk.write_chunk(OP_CONSTANT);
+    chunk.write_chunk(constant_idx);
+
+    chunk.write_chunk(OP_RETURN);
     disassembleChunk(&chunk, "Test chunk");
-    chunk.code.clear();
+    chunk.clear();
 
     return 0;
 }
