@@ -1,6 +1,6 @@
 #include <iostream>
-#include "chunk.h"
-#include "debug.h"
+#include "bytecode/chunk.h"
+#include "bytecode/debug.h"
 
 int main() {
     Chunk chunk;
